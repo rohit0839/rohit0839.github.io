@@ -1,0 +1,419 @@
+
+<html>
+<head>
+	<title>Hello</title>
+
+	<style>
+		body {
+			background-color: #eee;
+			background-image: linear-gradient( top, #aaa 0%, #eee 51% );
+			background-image: -webkit-linear-gradient( top, #aaa 0%, #eee 51% );
+			background-image: -ms-linear-gradient( top, #aaa 0%, #eee 51% );
+			background-image: -o-linear-gradient( top, #aaa 0%, #eee 51% );
+			background-image: -ms-linear-gradient( top, #aaa 0%, #eee 51% );
+			background-image: -webkit-gradient(
+				linear,
+				left top,
+				left bottom,
+				color-stop( 0, #aaa ),
+				color-stop( 0.51, #eee )
+			);
+		}
+
+		#orb {
+			width: 700px;
+			height: 800px;
+			margin: auto;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate( -50%, -50% );
+			-webkit-transform: translate( -50%, -50% );
+			-mos-transform: translate( -50%, -50% );
+			-o-transform: translate( -50%, -50% );
+			-ms-transform: translate( -50%, -50% );
+		}
+
+	</style>
+
+</head>
+
+<body oncontextmenu="return false">
+    
+    
+	<svg id="orb" width="700" height="800" viewBox="0 0 700 800" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
+
+		<defs>
+			<radialGradient id="inner_glow_gradient">
+				<stop class="core_color" offset="55%" stop-color="#090" stop-opacity="0"/>
+				<stop class="core_color" offset="100%" stop-color="#090" stop-opacity="1"/>
+			</radialGradient>
+			<g id="inner_glow">
+				<circle fill="#fff" cx="350" cy="350" r="298"/>
+				<circle fill="url(#inner_glow_gradient)" cx="350" cy="350" r="298"/>
+			</g>
+
+			<radialGradient id="outer_gradient">
+				<stop offset="70%" stop-color="#fff"/>
+				<stop offset="100%" stop-color="#bbb"/>
+			</radialGradient>
+			<g id="outer">
+				<path fill="url(#outer_gradient)" fill-rule="evenodd" d="M 350,350 m -300, 0 a 300,300 0 1,0 600,0 a 300,300 0 1,0 -600,0 M 350,350 m -85, 0 a 85,85 0 1,0 170,0 a 85,85 0 1,0 -170,0" />
+			</g>
+
+			<radialGradient id="inner_gradient" fx="60%" fy="40%">
+				<stop class="core_color" offset="0%" stop-color="#090" stop-opacity="0.1"/>
+				<stop class="core_color" offset="40%" stop-color="#090" stop-opacity="1"/>
+				<stop class="core_color" offset="95%" stop-color="#090" stop-opacity="1"/>
+				<stop class="core_color" offset="100%" stop-color="#090" stop-opacity="0.4"/>
+			</radialGradient>
+			<g id="inner">
+				<use xlink:href="#inner_glow" />
+				<circle id="inner_power" fill="#ff0" cx="350" cy="350" r="175" />
+				<circle id="inner_core" fill="url(#inner_gradient)" cx="350" cy="350" r="175" />
+			</g>
+
+			<linearGradient id="primary_gradient" x1="0.5" x2="0" y1="0" y2="1">
+				<stop offset="0%" stop-color="#666"/>
+				<stop offset="10%" stop-color="#777"/>
+				<stop offset="100%" stop-color="#fff"/>
+			</linearGradient>
+			<g id="primary">
+				<path fill="url(#primary_gradient)" fill-rule="evenodd" d="M 350,350 m -100, 0 a 100,100 0 1,0 200,0 a 100,100 0 1,0 -200,0 M 350,350 m -85, 0 a 85,85 0 1,0 170,0 a 85,85 0 1,0 -170,0" />
+			</g>
+
+			<linearGradient id="secondary_hole_gradient" x1="0" x2="1" y1="0.5" y2="0.5">
+				<stop offset="0%" stop-color="#333"/>
+				<stop offset="100%" stop-color="#fff"/>
+			</linearGradient>
+			<mask id="secondary_mask">
+				<path fill="#fff" d="M530,350 m -30,0 a 45,60 0 1 1 0 1 z" />
+			</mask>
+			<g id="secondary">
+				<g id="secondary_hole" mask="url(#secondary_mask)">
+					<use xlink:href="#inner" />
+					<path fill="url(#secondary_hole_gradient)" fill-rule="evenodd" d="M530,350 m -30,0 a 45,60 0 1 1 0 0.1 M510,350 m -30,0 a 45,60 0 1 1 0 0.1 z" />
+				</g>
+			</g>
+
+			<linearGradient id="shine_gradient" x1="0.6" x2="0" y1="0" y2="1">
+				<stop offset="0%" stop-color="#fff" stop-opacity="0.6" />
+				<stop offset="100%" stop-color="#fff" stop-opacity="0" />
+			</linearGradient>
+
+			<radialGradient id="shadow_gradient">
+				<stop offset="25%" stop-color="#000" stop-opacity="0.5"/>
+				<stop offset="100%" stop-color="#000" stop-opacity="0"/>
+			</radialGradient>
+		</defs>
+
+		<ellipse id="sphere_shadow" fill="url(#shadow_gradient)" cx="335" cy="730" rx="225" ry="20" />
+		<g id="jaby_sphere" transform="translate( 0 20 )">
+			<g id="sphere_inner">
+				<use xlink:href="#inner" />
+			</g>
+ 			<g id="sphere_outer">
+				<use xlink:href="#outer" />
+			</g>
+			<g id="sphere_center">
+				<use xlink:href="#primary" />
+			</g>
+ 			<g id="sphere_holes">
+				<use xlink:href="#secondary" transform="rotate( 15, 350, 350)" />
+				<use xlink:href="#secondary" transform="rotate( 75, 350, 350)" />
+				<use xlink:href="#secondary" transform="rotate( 135, 350, 350)" />
+				<use xlink:href="#secondary" transform="rotate( 195, 350, 350)" />
+				<use xlink:href="#secondary" transform="rotate( 255, 350, 350)" />
+				<use xlink:href="#secondary" transform="rotate( 315, 350, 350)" />
+			</g>
+			<circle id="sphere_shine" fill="url(#shine_gradient)" cx="350" cy="350" r="300"/>
+		</g>
+	</svg>
+
+	<script>
+		"use strict";
+
+		window.onload = function () {
+			function addEventHandler( element, eventType, handler ) {
+				if ( !element ) {
+					return;
+				}
+				if ( element.addEventListener ) {
+					element.addEventListener( eventType, handler, false );
+				}
+				else {
+					if ( element.attachEvent ) {
+						element.attachEvent( "on" + eventType, handler );
+					}
+				}
+			}
+
+			var jaby = ( function () {
+
+				var jabyOrb = {
+					orb: document.getElementById( "orb" ),
+					on: false,
+					online: true,
+					error: false,
+					warning: false,
+					rotated_sphere: document.getElementById( "sphere_holes" ),
+					rotateStep: 1,
+					rotateDeg: 0,
+					inner_core: document.getElementById( "inner_core" ),
+					inner_power: document.getElementById( "inner_power" ),
+					core_radius: 0,
+					pulseMax: 15,
+					pulseDirection: 1,
+					pulse: 0,
+					shadow: document.getElementById( "sphere_shadow" ),
+					sphere: document.getElementById( "jaby_sphere" ),
+					stops: document.getElementsByClassName( "core_color" )
+				};
+
+				jabyOrb.core_radius = parseInt( jabyOrb.inner_core.getAttribute( "r" ), 10 );
+
+				jabyOrb.pulseCore = function pulseCore() {
+					this.pulse = this.pulse + this.pulseDirection;
+					this.inner_core.setAttribute( "r", this.core_radius + this.pulse );
+					this.inner_power.setAttribute( "r", this.core_radius + this.pulse );
+
+					if ( this.pulse >= this.pulseMax || this.pulse <= 0 ) {
+						this.pulseDirection *= -1;
+					}
+				}
+
+				jabyOrb.rotateSphere = function rotateSphere() {
+					this.rotateDeg = ( this.rotateDeg + this.rotateStep ) % 360;
+					this.rotated_sphere.setAttribute( "transform", "rotate( " + this.rotateDeg + ", 350, 350 )" );
+				}
+
+				jabyOrb.animate = function animate() {
+					if ( this.on ) {
+						this.pulseCore();
+						this.rotateSphere();
+
+						if ( this.raised < 1 ) {
+							this.raised += 0.1;
+							this.raiseOrb();
+						}
+					}
+					else {
+						if ( this.raised > 0 ) {
+							this.raised -= 0.1;
+							this.raiseOrb();
+						}
+					}
+				};
+
+				jabyOrb.raiseOrb = function raiseOrb() {
+					var raiseBy, radiusRatio;
+
+					if ( this.raised > 0.99 ) {
+						this.raised = 1;
+					}
+					if ( this.raised < 0.01 ) {
+						this.raised = 0;
+					}
+
+					raiseBy = this.raisedHeight - ( this.raised * this.raisedHeight );
+					this.sphere.setAttribute( "transform", "translate( 0 " + raiseBy + " )" );
+
+					radiusRatio = 1 + ( ( 1 - this.raised ) * 0.2 );
+					this.shadow.setAttribute( "rx", radiusRatio * this.shadowRadiusX );
+					this.shadow.setAttribute( "ry", radiusRatio * this.shadowRadiusY );
+
+					if ( this.off && this.raised === 0 ) {
+						this.turnOffAnimation();
+					}
+				};
+
+				jabyOrb.turnOnAnimation = function turnOnAnimation() {
+					var self = this;
+
+					if ( !this.animationTimer ) {
+						this.animationTimer = setInterval( function() {
+							self.animate();
+						}, 60 );
+					}
+				};
+
+				jabyOrb.turnOffAnimation = function turnOffAnimation() {
+					if ( this.animationTimer ) {
+						clearInterval( this.animationTimer );
+						delete( this.animationTimer );
+					}
+				};
+
+				jabyOrb.setCoreColor = function setCoreColor( color ) {
+					var i;
+					var numStops = this.stops.length;
+
+					for ( i = 0; i < numStops; i++ ) {
+						this.stops[ i ].setAttribute( "stop-color", color );
+					}
+				};
+
+				jabyOrb.setPowerColor = function setInnerColor( color ) {
+					this.inner_power.setAttribute( "fill", color );
+				};
+
+				jabyOrb.setOrbColor = function animate() {
+					if ( this.on ) {
+						this.setPowerColor( "#ff0" );
+
+						if ( this.error ) {
+							this.setCoreColor( "#900" );
+						}
+						else {
+							if ( this.warning ) {
+								this.setCoreColor( "#960" );
+							}
+							else {
+								if ( this.notification ) {
+									this.setCoreColor( "#009" );
+								}
+								else {
+									if ( this.online ) {
+										this.setCoreColor( "#090" );
+									}
+									else {
+										this.setCoreColor( "#666" );
+									}
+								}
+							}
+						}
+					}
+					else {
+						this.setPowerColor( "#fff" );
+						this.setCoreColor( "#000" );
+					}
+				};
+
+				jabyOrb.toggleOnOff = function toggleOnOff() {
+					this.on ? this.turnOff() : this.turnOn();
+				};
+
+				jabyOrb.turnOn = function turnOn() {
+					this.on = true;
+
+					this.setOrbColor();
+
+					this.turnOnAnimation();
+				};
+
+				jabyOrb.turnOff = function turnOff() {
+					this.on = false;
+
+					this.setOrbColor();
+				};
+
+				jabyOrb.setOnline = function setOnline() {
+					this.online = true;
+					this.setOrbColor();
+				};
+
+				jabyOrb.clearOnline = function clearOnline() {
+					this.online = false;
+					this.setOrbColor();
+				};
+
+				jabyOrb.setOffline = function setOffline() {
+					this.clearOnline();
+				};
+
+				jabyOrb.setError = function setError() {
+					this.error = true;
+					this.setOrbColor();
+				};
+
+				jabyOrb.clearError = function clearError() {
+					this.error = false;
+					this.setOrbColor();
+				};
+
+				jabyOrb.setWarning = function setWarning() {
+					this.warning = true;
+					this.setOrbColor();
+				};
+
+				jabyOrb.clearWarning = function clearWarning() {
+					this.warning = false;
+					this.setOrbColor();
+				};
+
+				jabyOrb.setNotification = function setNotification() {
+					this.notification = true;
+					this.setOrbColor();
+				};
+
+				jabyOrb.clearNotification = function clearNotification() {
+					this.notification = false;
+					this.setOrbColor();
+				};
+
+				jabyOrb.initialize = function initialize() {
+					var height = parseFloat( this.orb.getAttribute( "height" ) );
+					var sphereHeight = parseFloat( this.orb.getAttribute( "width" ) );
+
+					this.shadowRadiusY = parseFloat( this.shadow.getAttribute( "ry" ) );
+					this.shadowRadiusX = parseFloat( this.shadow.getAttribute( "rx" ) );
+
+					this.raisedHeight = height - sphereHeight - this.shadowRadiusY;
+
+					this.raised = 0;
+					this.raiseOrb();
+
+					this.online = false;
+					this.error = false;
+					this.warning = false;
+
+					this.turnOff();
+				};
+
+				return jabyOrb;
+			}() );
+
+			jaby.initialize();
+			addEventHandler( jaby.orb, "click", function() {
+				jaby.toggleOnOff();
+			} );
+
+			setTimeout( function() {
+				jaby.turnOn();
+			}, 1000 );
+			setTimeout( function() {
+				jaby.setOnline();
+			}, 3000 );
+			setTimeout( function() {
+				jaby.setNotification();
+			}, 6000 );
+			setTimeout( function() {
+				jaby.setWarning();
+			}, 9000 );
+			setTimeout( function() {
+				jaby.setError();
+			}, 12000 );
+			setTimeout( function() {
+				jaby.clearError();
+			}, 15000 );
+			setTimeout( function() {
+				jaby.clearWarning();
+			}, 18000 );
+			setTimeout( function() {
+				jaby.clearNotification();
+			}, 21000 );
+			setTimeout( function() {
+				jaby.setOffline();
+			}, 24000 );
+			setTimeout( function() {
+				jaby.turnOff();
+			}, 27000 );
+		};
+	</script>
+
+<h5>Hello there! Nice to meet you. My name is Rohit Ranjan.</h5>
+<h6>Feel free to rotate the Spinner. </h6>
+<a href="mailto:rrrohitranjanrr0@gmail.com">Email Me</a>
+
+</body>
+</html>
