@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <style>
+  
 body, html {
   height: 100%;
   margin: 0;
@@ -54,10 +55,10 @@ hr {
     <p style="color:red;">- Rohit</p>
   </div>
 </div>
-
 <script>
 
 var countDownDate = new Date("Oct 4, 2020 12:01:01").getTime();
+  
 var countdownfunction = setInterval(function() {
   var now = new Date().getTime();
   var distance = countDownDate - now;
@@ -66,15 +67,13 @@ var countdownfunction = setInterval(function() {
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
   
-  
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
   
   if (distance < 0) {
     clearInterval(countdownfunction);
     document.getElementById("demo").innerHTML = "EXPIRED";
   }
-}, 1000);
+},1000);
 </script>
 
 </body>
